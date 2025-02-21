@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Combate Interativo</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .personagem {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        .info {
+            margin-top: 10px;
+        }
+        .botao {
+            padding: 10px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Combate Entre Guerreiro e Mago</h1>
+
+    <div class="personagem" id="guerreiro">
+        <h2>Guerreiro</h2>
+        <div id="vidaGuerreiro">Vida: 100</div>
+        <div id="ataqueGuerreiro">Ataque: 25</div>
+        <div id="defesaGuerreiro">Defesa: 10</div>
+        <button class="botao" id="atacarGuerreiro">Atacar</button>
+        <button class="botao" id="habilidadeGuerreiro">Usar Habilidade</button>
+        <button class="botao" id="defenderGuerreiro">Defender</button>
+    </div>
+
+    <div class="personagem" id="mago">
+        <h2>Mago</h2>
+        <div id="vidaMago">Vida: 80</div>
+        <div id="ataqueMago">Ataque: 30</div>
+        <div id="defesaMago">Defesa: 5</div>
+        <button class="botao" id="atacarMago">Atacar</button>
+        <button class="botao" id="habilidadeMago">Usar Habilidade</button>
+        <button class="botao" id="defenderMago">Defender</button>
+    </div>
+
+    <div id="mensagem"></div>
+
+    <script>
+        class Personagem {
+            constructor(nome, vida, ataque, defesa) {
+                this.nome = nome;
+                this.vida = vida;
+                this.ataque = ataque;
+                this.defesa = defesa;
+            }
+
+            calcularCritico() {
+                return Math.random() < 0.2;
+            }
+
+            atacar(inimigo) {
+                let dano = this.ataque - inimigo.defesa;
+                if (dano < 0) dano = 0;
+
+                if (this.calcularCritico()) {
+                    dano *= 2;
+                    return `${this.nome} fez um ataque CRÍTICO! ${this.nome} causou ${dano} de dano.`;
+                }
+                
+                inimigo.vida -= dano;
+                return `${this.nome} causou ${dano} de dano em ${inimigo.nome}. ${inimigo.nome} agora tem ${inimigo.vida} de vida.`;
+            }
+
+            usarHabilidade(inimigo) {
+                if (this.nome === "Guerreiro") {
+                    this.vida += 20;
+                    return `${this.nome} usou "Cura Rápida" e recuperou 20 de vida.`;
+                } else if (this.nome === "Mago") {
+                    inimigo.vida -= 15;
+                    return `${this.nome} usou "Feitiço Poderoso" e causou 15 de dano adicional a ${inimigo.nome}.`;
+                }
+            }
+
+            defender() {
+                this.defesa += 5;
+                return `${this.nome} aumentou sua defesa em 5 pontos.`;
+            }
+        }
+
+        const guerreiro = new Personagem("Guerreiro", 100, 25, 10);
+        const mago = new Personagem("Mago", 80, 30, 5);
+
+        // Funções para atualizar a UI
+        function atualizarInformacoes() {
+            document.getElementById("vidaGuerreiro").textContent = `Vida: ${guerreiro.vida}`;
+            document.getElementById("vidaMago").textContent = `Vida: ${mago.vida}`;
+        }
+
+        function mostrarMensagem(mensagem) {
+            document.getElementById("mensagem").textContent = mensagem;
+        }
+
+        // Ações do Guerreiro
+        document.getElementById("atacarGuerreiro").addEventListener("click", () => {
+            let mensagem = guerreiro.atacar(mago);
+            mostrarMensagem(mensagem);
+            atualizarInformacoes();
+            verificarFimDeJogo();
+        });
+
+        document.getElementById("habilidadeGuerreiro").addEventListener("click", () => {
+            let mensagem = guerreiro.usarHabilidade(mago);
+            mostrarMensagem(mensagem);
+            atualizarInformacoes();
+            verificarFimDeJogo();
+        });
+
+        document.getElementById("defenderGuerreiro").addEventListener("click", () => {
+            let mensagem = guerreiro.defender();
+            mostrarMensagem(mensagem);
+            atualizarInformacoes();
+        });
+
+        // Ações do Mago
+        document.getElementById("atacarMago").addEventListener("click", () => {
+            let mensagem = mago.atacar(guerreiro);
+            mostrarMensagem(mensagem);
+            atualizarInformacoes();
+            verificarFimDeJogo();
+        });
+
+        document.getElementById("habilidadeMago").addEventListener("click", () => {
+            let mensagem = mago.usarHabilidade(guerreiro);
+            mostrarMensagem(mensagem);
+            atualizarInformacoes();
+            verificarFimDeJogo();
+        });
+
+        document.getElementById("defenderMago").addEventListener("click", () => {
+            let mensagem = mago.defender();
+            mostrarMensagem(mensagem);
+            atualizarInformacoes();
+        });
+
+        // Função para verificar se o combate terminou
+        function verificarFimDeJogo() {
+            if (guerreiro.vida <= 0) {
+                mostrarMensagem("O Mago venceu o combate!");
+            } else if (mago.vida <= 0) {
+                mostrarMensagem("O Guerreiro venceu o combate!");
+            }
+        }
+
+        // Inicializando o jogo
+        atualizarInformacoes();
+    </script>
+</body>
+</html>
