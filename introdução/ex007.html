@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atributos e métodos privados</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Exemplo Prático</h1>
+
+    <script>
+
+        class Imposto {
+            constructor(nome, salario) {
+                this.nome = nome
+                this.salario = salario
+            }
+
+            #porcentagemImposto = 0.20
+
+            #calcularImposto() {
+                return this.salario * this.#porcentagemImposto
+            }
+
+            obterSalarioLiquido() { // função disponivel para ser usada fora da classe
+                return this.salario - this.#calcularImposto()
+            } 
+        }
+
+        //pessoa1.#porcentagemImposto = 0.5
+
+        let pessoa1 = new Imposto('João', 1000)
+        //pessoa1.#porcentagemImposto = 0.5
+        console.log(`O salário líquido de ${pessoa1.nome} é R$${pessoa1.obterSalarioLiquido()}.`)
+
+       // console.log(pessoa1.calcularImposto())
+
+        //pessoa1.porcentagemImposto = 0.5
+
+    </script>
+</body>
+</html>

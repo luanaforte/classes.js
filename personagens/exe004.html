@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>introdução</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h2>3. HERANÇA: Criando tipos específicos de personagens</h2>
+    <p>Podemos criar <b>subclasses</b> para diferentes tipos de personagens, herdando tudo da classe principal.</p>
+
+    <script>
+        
+        class Personagem {
+            constructor(nome, vida, ataque, defesa) {
+                this.nome = nome
+                this.vida = vida
+                this.ataque = ataque 
+                this.defesa = defesa 
+            }
+
+            atacar() {
+                console.log(`${this.nome} atacou com força de ${this.ataque}!`)
+            }
+
+            defender() {
+                console.log(`${this.nome} defendeu e reduziu o dano em ${this.defesa} pontos!`)
+            }
+        }
+
+        // guerreiro tem mais vida e defesa
+        class Guerreiro extends Personagem {
+            constructor(nome) {
+                super(nome, 120, 15, 20)
+            }
+
+            gritoDeGuerra() {
+                console.log(`${this.nome} grita: "Pelo reinooooo!"`)
+            }
+        }
+
+        class Mago extends Personagem {
+            constructor(nome) {
+                super(nome, 80, 40, 5)
+            }
+
+            lancarFeitico() {
+                console.log(`${this.nome} lançou um feitiço poderoso!`)
+            }
+        }
+
+        const yosef = new Guerreiro ("Yosef")
+        const vicar = new Mago ("Vicar")
+
+        yosef.atacar() 
+        yosef.gritoDeGuerra()
+
+        vicar.lancarFeitico()
+        vicar.defender()
+
+    </script>
+</body>
+</html>

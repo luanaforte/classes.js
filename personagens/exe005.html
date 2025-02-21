@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>introdução</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h2>4. Sistema de Combate Simples</h2>
+    <p>Fazendo os personagens <b>lutarem entre si!</b></p>
+
+    <script>
+        
+        class Personagem {
+            constructor(nome, vida, ataque, defesa) {
+                this.nome = nome
+                this.vida = vida
+                this.ataque = ataque 
+                this.defesa = defesa 
+            }
+
+            atacar(inimigo) {
+                let dano = this.ataque - inimigo.defesa
+                if (dano < 0) dano = 0
+
+                inimigo.vida -= dano 
+
+                console.log(`${this.nome} atacou ${inimigo.nome}, causando ${dano} de dano!`)
+
+                console.log(`${inimigo.nome} agora tem ${inimigo.vida} de vida restante.`)
+            }
+        }
+
+        // criando personagens
+        const guerreiro = new Personagem("Guerreiro", 100, 25, 10)
+        const mago = new Personagem("Mago", 80, 30, 5)
+
+        // simulando um combate
+        guerreiro.atacar(mago)
+        mago.atacar(guerreiro)
+
+    </script>
+</body>
+</html>

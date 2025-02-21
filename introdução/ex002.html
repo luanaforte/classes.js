@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <title>Getter e Setter</title>
+</head>
+<body>
+    <h1>Getter e Setter Javascript</h1>
+    <h2>O que é?</h2>
+    <ul>
+        <li> São métodos que servem para obter ou colocar valor em um <b>atributo</b> 
+
+        </li>
+    </ul>
+
+    <h2>Quando usar</h2>
+    <ul>
+        <li> Quando você desejar proteger o acesso a um atributo
+            <ul>
+                <li>Em atributos privados, apenas a class em questão pode ter acesso.</li>
+            </ul>
+        </li><br>
+
+        <li> Quando você precisar colocar uma lógica adicional para <b>acessar</b> ou <b>definir</b> um valor
+
+        </li><br>
+
+        <li> Retornar um valor calculado
+            <ul>
+                <li>Ex: imagine que você tem a data de nascimento de uma pessoa e precisa saber a idade</li>
+            </ul>
+        </li>
+    </ul>
+
+    <script>
+
+        class MinhaClasse {
+            constructor(atributo) {
+                this.atributo = atributo 
+            }
+
+            get obterAtributo() {
+                return this.atributo
+            }
+
+            set definirAtributo(valor) {
+                this.atributo = valor
+            }
+        }
+
+        let exemplo = new MinhaClasse("Teste")
+        console.log(exemplo.obterAtributo)
+
+        exemplo.definirAtributo = "Teste 123"
+        console.log(exemplo.obterAtributo)
+
+        // adicionando uma lógica a esse valor
+        class MinhaClass2 {
+            constructor(atributo) {
+                this.atributo = atributo
+            }
+
+            get obterAtributo() {
+                return this.atributo.toUpperCase()
+            }
+
+            set definirAtributo(valor) {
+                if(!valor) {
+                    throw new Error('O valor não pode ser vazio')
+                }
+
+                this.atributo = valor
+            }
+        }
+
+    </script>
+
+</body>
+</html>

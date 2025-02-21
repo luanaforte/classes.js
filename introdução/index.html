@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+    <title>introdução</title>
+</head>
+<body>
+    <h2>O que é?</h2>
+
+    <ul>
+        <li> Classes são templates para criação de objetos
+            <ul>
+                <li>Classes podem facilitar a criação de diversos objetos com a mesma estrutura</li>
+            </ul>
+        </li><br>
+
+
+        <li> Pode conter atributos e métodos
+            <ul>
+                <li><b>Atributos:</b> são as características dessa classe</li>
+                <li>Já os <b>métodos</b> são as funções/li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>Quando usar</h2>
+    <ul>
+        <li> Quando tiver um conjunto de dados que pode ter o mesmo padrão 
+            <ul>
+                <li>Ex: Dados de pessoas, dados de pedidos</li>
+            </ul>
+        </li><br>
+
+        <li> Quando precisar encapsular diversas funções de um recurso
+            <ul>
+                <li>Ex: Conta bancária</li>
+            </ul>
+        </li>
+    </ul>
+
+    <script>
+
+        class Pessoa {
+            constructor(nome, idade) {
+                this.nome = nome
+                this.idade = idade 
+            }
+
+            ola() {
+                console.log(`Olá, ${this.nome}`)
+            }
+        }
+        let pessoa = new Pessoa('José Filomeno', 6)
+        pessoa.ola()
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <title>Herança</title>
+</head>
+<body>
+    <h2>O que é</h2>
+    <ul>
+        <li>Possibilita um classe obter atributos e métodos e outra classe
+            <ul>
+                <li>Uma classe filha irá pegar todos os comportamentos de uma classe pai</li>
+            </ul>
+        </li>
+    </ul><br>
+    <h2>Quando usar</h2>
+    <ul>
+        <li>Quando tiver objetos com códigos semelhantes
+            <ul>
+                <li>Herdar atributos em comum da classe pai e definir atributos específicos <br> nas subclasses (classe filha)</li>
+            </ul>
+        </li>
+    </ul>
+
+    <script>
+        class Base {
+            constructor(atributo) {
+                this.atributo = atributo
+            }
+        }
+
+        class MinhaClasse extends Base {
+            constructor(atributo, texto) { // herda (atributo) da class Base
+                super(atributo) //super() referencia o construtor da class Base
+
+                this.texto = texto 
+            }
+            funcao() {
+            console.log(`${this.atributo}: teste`)
+            }
+        }
+
+        let exemplo = new MinhaClasse("Teste1", "teste2")
+        exemplo.funcao()
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+    <title>Getter e Setter</title>
+</head>
+<body>
+    <h1>Exemplo Prático</h1>
+
+    <script>
+        class Pessoa {
+            nome;
+
+            // teste-nome (kebab-case)
+            get username() {
+                return this.nome 
+                //return this.kebabCase(this.nome)
+            }
+
+            set setName(nome) {
+                if(!nome){
+                    throw new Error('O nome não pode ser vazio')
+                }
+                this.nome = nome
+            }
+
+            // kebabCase(string) {
+            //     return string 
+            //         .replace(/([a-z])([A-Z])/g, "$1-$2")
+            //         .replace(/[\s]+/g, '-')
+            //         .toLowerCase()
+            // }
+        }
+
+        let pessoa = new Pessoa();
+        pessoa.setName = "luana"
+        console.log('Nome: ', pessoa.username)
+    </script>
+</body>
+</html>

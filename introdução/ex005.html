@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <title>Herança</title>
+</head>
+<body>
+    <h1>Exemplo Prático</h1>
+
+    <script>
+
+        class Pessoa {
+            constructor(nome, telefone, email) {
+                this.nome = nome 
+                this.telefone = telefone
+                this.email = email
+            }
+
+            falar() {
+                console.log(`${this.nome} está falando`)
+            }
+
+            andar() {
+                console.log(`${this.nome} está andando`)
+            }
+        }
+
+        class PessoaFisica extends Pessoa {
+            constructor(nome, telefone, email, cpf) {
+                super(nome, telefone, email)
+
+                this.cpf = cpf
+            }
+        }
+
+        class PessoasJuridica extends Pessoa {
+            constructor(nome, telefone, email, cnpj) {
+                super(nome, telefone, email)
+
+                this.cnpj
+            }
+
+            pagarSalarios() {
+                // super.andar()
+                console.log(`${this.nome} pagou os salários.`)
+            }
+        }
+
+        let pessoa1 = new PessoaFisica("José Filomeno", "123344", "jose@email.com", "123456-90")
+        pessoa1.andar()
+        // console.log(pessoa1.nome, pessoa1.cpf)
+
+        let pessoa2 = new PessoasJuridica("Caroline", "654321", "caroline@email.com", "654321-43")
+        // pessoa2.andar()
+        pessoa2.pagarSalarios() //função específica da pessoa jurídica
+
+    </script>
+
+</body>
+</html>

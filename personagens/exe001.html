@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>introdução</title>
+</head>
+<body>
+    <h1>CLASSES - Exemplo 01</h1>
+    <!-- criando cada personagem sem o uso de classes -->
+    <script>
+
+        const personagem1 = {
+            nome: "Guerreiro",
+            vida: 100,
+            ataque: 20,
+            atacar: function() {
+                console.log(`${this.nome} atacou com força de ${this.ataque}!`)
+            }
+        }
+        personagem1.atacar()
+
+        const personagem2 = {
+            nome: "Mago",
+            vida: 80,
+            ataque: 30,
+            atacar: function() {
+                console.log(`${this.nome} lançou um feitiço de ${this.ataque} de dano!`)
+            }
+        }
+        personagem2.atacar()
+
+    </script>
+</body>
+</html>

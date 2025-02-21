@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atributos e Métodos Privados</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Atibutos e métodos privados</h1>
+    <h2>O que é</h2>
+    <ul>
+        <li>Forma de não deixar atributos e métodos acessíveis fora da classe
+            <ul>
+                <li>Não expor parte da classe para quem estiver acessando ela</li>
+            </ul>
+        </li>
+    </ul><br>
+    <h3>Quando usar</h3>
+    <ul>
+        <li>Quando precisar que nenhuma outra classe interfira em um bloco</li>
+        <ul>
+            <li>Ex: Você tem uma variável <i>n</i> sendo utilizada somente dentro dessa classe. Por um descuido, o valor dessa variável é alterado durante a execução e isso gera um problema na lógica</li>
+        </ul>
+    </ul>
+
+    <script>
+
+        class MinhaClasse {
+            #atributoPrivado
+            #atributoPrivadoComInicializacao = 10
+
+            #metodoPrivado() {
+                //alguma lógica
+            }
+
+            get #getAtributoPrivado() {
+                return this.#atributoPrivado
+            }
+
+            set #setAtributoPrivado(attr) {
+                this.#atributoPrivado = attr
+            }
+
+            constructor() {
+                this.#setAtributoPrivado = 30
+                this.#atributoPrivado = 11
+            }
+        }
+
+    </script>
+
+</body>
+</html>

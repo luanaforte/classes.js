@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <title>classes</title>
+</head>
+<body>
+    <h1>Exemplo Prático</h1>
+
+    <script>
+
+        class Pedido {
+            constructor(data, itens, valor) {
+                this.data = data
+                this.itens = itens
+                this.valor = valor
+            }
+        }
+        let pedido = new Pedido(new Date, ['item 1', 'item 2'], 100)
+        console.log(pedido)
+
+        console.log(`O valor do pedido é ${pedido.valor}`)
+
+    </script>
+</body>
+</html>
